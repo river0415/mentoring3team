@@ -6,6 +6,13 @@
 </head>
 <body>
 <a href="/hosp/add">병원등록</a>
-<a href="/hosp/list">전체병원목록</a>
+<table border="1">
+    <tr><th>번호</th><th>병원명</th><th>주소</th><th>전화번호</th></tr>
+    {% for h in hlist %}
+    <tr>
+        <td>{{h.num}}</td><td>{{h.name}}</td><td>{{h.address}}</td><td>{{h.tel}}</td>
+    </tr>
+    {% endfor %}
+</table>
 </body>
 </html>

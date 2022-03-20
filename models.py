@@ -1,6 +1,5 @@
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
-from flask import session
 
 db = SQLAlchemy()
 migrate = Migrate()
@@ -16,6 +15,8 @@ class Hospital(db.Model):
     name = db.Column(db.String(50), nullable=False)
     address = db.Column(db.String(40), nullable=False)
     tel = db.Column(db.String(20), nullable=False)
+    latitude = db.Column(db.Numeric)
+    longitude = db.Column(db.Numeric)
 
 class HospService:
     def addHosp(self, h:Hospital):
