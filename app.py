@@ -6,15 +6,11 @@ import routes.hosp_route as hr
 
 import config
 
-# db = SQLAlchemy()
-# migrate = Migrate()
-
-app = Flask(__name__) # flask 객체 생성. 웹 서버를 포함한 app
+app = Flask(__name__)
 app.config.from_object(config)
 
 app.register_blueprint(hr.bp)
 
-db.init_app(app)
 migrate.init_app(app, db)
 
 @app.route('/')
