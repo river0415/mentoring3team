@@ -14,30 +14,22 @@
 	<!--<link rel="stylesheet" href="css/index.css">-->
 	<title>대문 페이지</title>
 	<style>
-		body {
-		  box-sizing: border-box;
-		}
 		#navbar{
 			display: flex;
 			justify-content: space-between;
 		}
 		.mapSection__mapArea{
-   			margin:6px auto 0px;
+   			margin:100px auto 0px;
    			<!--margin_bottom: 0px
 			transform: translateY(100px);-->
 		}
-		.inpoOfPet{
-			height: 500px;
+		.inpoOfPetArea{
    			text-align: center;
-   			margin: 5rem 0;
-   			border: 1px solid;
-   			border-left-style : none;
-			border-right-style : none;
-   			border-bottom-style : none;
+   			margin: 10rem;
 		}
 		.mapSection__button{
 			position: relative;
-			left : 68rem;
+			left : 70.5rem;
 			margin : 5px;
 		}
 
@@ -55,31 +47,17 @@
 <a href='/member/login'>로그인</a>-->
 
 <!--Navbar-->
-		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		  <div class="container-fluid">
-			<a class="navbar-brand" href="#">Pet</a>
-			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-			  <span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-				<li class="nav-item">
-				  <a class="nav-link active" aria-current="page" href="#">Home</a>
-				</li>
-				  <li class="nav-item">
-				  <a class="nav-link active" aria-current="page" href="#">병원검색</a>
-				</li>
-				  <li class="nav-item">
-				  <a class="nav-link active" aria-current="page" href="#">반려동물</a>
-				</li>
-				</ul>
-			</div>
-			  <div>
-				   <button type="button" onclick="location.href='/mem/login';">로그인</button>
-				  <button type="button">회원가입</button>
-			  </div>
-		  </div>
-		</nav>
+	<nav id="navbar">
+		<div class="navbar__logo">
+			<i class=""></i>
+			<a href="#">Pet</a>
+		</div>
+		<div class="navbar__menu">
+			<button type="button">로그인</button>
+			<button type="button">회원가입</button>
+		</div>
+
+	</nav>
 
 <!--
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -108,7 +86,7 @@
 	<!--Map-->
 	<section id="mapSection">
 
-				<div class="mapSection__mapArea" id="map" style="width:550px;height:450px;"></div>
+				<div class="mapSection__mapArea" id="map" style="width:500px;height:350px;"></div>
 
 				<!-- 부트스트랩 primary 버튼 -->
 				<button type="button" class="mapSection__button"  onclick="getCurrentPosBtn()">내 위치 가져오기</button>
@@ -179,20 +157,10 @@
 <!--InpoOfPet-->
 	<section id="inpoOfPet">
 
-		<div class="inpoOfPet">
+		<div class="inpoOfPetArea">
 
 			<h3>반려동물 정보</h3>
-			<div class="inpoOfPet__Picture">
-				<a
-				href=""
-				class=""
-				target="self"
-				></a>
-			</div>
 
-			<div class="inpoOfPet__desc">
-
-			</div>
 		</div>
 
 	</section>
