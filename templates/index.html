@@ -2,118 +2,171 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
  <!-- Required meta tags -->
-    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<title>대문 페이지</title>
-
-    <title>대문 페이지</title>
-
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	<!--<link rel="stylesheet" href="css/index.css">-->
+	<title>대문 페이지</title>
+	<style>
+		#navbar{
+			display: flex;
+			justify-content: space-between;
+		}
+		.mapSection__mapArea{
+   			margin:100px auto 0px;
+   			<!--margin_bottom: 0px
+			transform: translateY(100px);-->
+		}
+		.inpoOfPetArea{
+   			text-align: center;
+   			margin: 10rem;
+		}
+		.mapSection__button{
+			position: relative;
+			left : 70.5rem;
+			margin : 5px;
+		}
+
+	</style>
+
 </head>
 
-<body class="container">
+<body class>
 <!--<h3>병원 검색</h3>
 <body>
-
 <h3>병원 목록</h3>
 <a href='/hosp/list'>병원목록</a>
 <h3>내 반려동물 관리</h3>
 <a href='/member/logout'>로그아웃</a>
 <a href='/member/login'>로그인</a>-->
 
-	<center> <div id="map" style="width:500px;height:350px;"></div> </center>
+<!--Navbar-->
+	<nav id="navbar">
+		<div class="navbar__logo">
+			<i class=""></i>
+			<a href="#">Pet</a>
+		</div>
+		<div class="navbar__menu">
+			<button type="button">로그인</button>
+			<button type="button">회원가입</button>
+		</div>
 
-		<!-- 부트스트랩 primary 버튼 -->
+	</nav>
 
-			<button type="button" class="btn btn-lg btn-primary btn-sm" id="getMyPositionBtn" onclick="getCurrentPosBtn()">내 위치 가져오기</button>
+<!--
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Pet</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+		  <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+		  </li>
+		  <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+    </div>
+  </div>
+</nav>
+-->
 
-		<!-- 부트스트랩 이용을 위한 jQuery와 CDN -->
-		<!--<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>-->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-		<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>-->
+	<!--Map-->
+	<section id="mapSection">
 
-	<script src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=f346103f7663b994795037e7861339f2"></script>
-	<script>
+				<div class="mapSection__mapArea" id="map" style="width:500px;height:350px;"></div>
 
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-		    mapOption = {
-		        center: new kakao.maps.LatLng(37.56828, 126.97755), // 지도의 중심좌표
-		        level: 4, // 지도의 확대 레벨
-		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-		    };
+				<!-- 부트스트랩 primary 버튼 -->
+				<button type="button" class="mapSection__button"  onclick="getCurrentPosBtn()">내 위치 가져오기</button>
 
-		// 지도를 생성한다
-		var map = new kakao.maps.Map(mapContainer, mapOption);
+				<!-- 부트스트랩 이용을 위한 jQuery와 CDN -->
+					<!--<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>-->
+					<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+					<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>-->
 
-		function locationLoadSuccess(pos){
-   		 // 현재 위치 받아오기
-   		 var currentPos = new kakao.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
+				<script src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=f346103f7663b994795037e7861339f2"></script>
 
-   		 // 지도 이동(기존 위치와 가깝다면 부드럽게 이동)
-   		 map.panTo(currentPos);
-
-  		  // 마커 생성
-   		 var marker = new kakao.maps.Marker({
-        position: currentPos
-   		 });
-
-   		 // 기존에 마커가 있다면 제거
-   		 marker.setMap(null);
-  		  marker.setMap(map);
-		};
-
-		function locationLoadError(pos){
-    		alert('위치 정보를 가져오는데 실패했습니다.');
-		};
-
-		// 위치 가져오기 버튼 클릭시
-		function getCurrentPosBtn(){
- 		   navigator.geolocation.getCurrentPosition(locationLoadSuccess,locationLoadError);
-		};
-
-	</script>
-
- <!-- Optional JavaScript; choose one of the two! -->
-
-    <!-- Option 1: Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-
-    <!-- Option 2: Separate Popper and Bootstrap JS -->
-    <!--
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
-    -->
-<a href='/member/login'>로그인</a>
-
-<div class="row">
+				<script>
 
 
-<div id="map" style="width:750px;height:350px;"></div>
+					var mapContainer = document.getElementById('map'), // 지도를 표시할 div
+						mapOption = {
+							center: new kakao.maps.LatLng(37.56828, 126.97755), // 지도의 중심좌표
+							level: 4, // 지도의 확대 레벨
+							mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
+						};
 
-	<script src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=5aae6c27047fe23d5db55dccf9f316f1"></script>
-	<script>
-		var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-		    mapOption = {
-		        center: new kakao.maps.LatLng(37.56030, 126.97735), // 지도의 중심좌표
-		        level: 5, // 지도의 확대 레벨
-		        mapTypeId : kakao.maps.MapTypeId.ROADMAP // 지도종류
-		    };
+					// 지도를 생성한다
+					var map = new kakao.maps.Map(mapContainer, mapOption);
 
-		// 지도를 생성한다
-		var map = new kakao.maps.Map(mapContainer, mapOption);
-	</script>
+					function locationLoadSuccess(pos){
+					 // 현재 위치 받아오기
+					 var currentPos = new kakao.maps.LatLng(pos.coords.latitude,pos.coords.longitude);
 
-<h3>반려동물 정보</h3>
+					 // 지도 이동(기존 위치와 가깝다면 부드럽게 이동)
+					 map.panTo(currentPos);
 
+					  // 마커 생성
+					 var marker = new kakao.maps.Marker({
+					position: currentPos
+					 });
+
+					 // 기존에 마커가 있다면 제거
+					 marker.setMap(null);
+					  marker.setMap(map);
+					};
+
+					function locationLoadError(pos){
+						alert('위치 정보를 가져오는데 실패했습니다.');
+					};
+
+					// 위치 가져오기 버튼 클릭시
+					function getCurrentPosBtn(){
+					   navigator.geolocation.getCurrentPosition(locationLoadSuccess,locationLoadError);
+					};
+
+				</script>
+
+	</section>
+
+
+			 <!-- Optional JavaScript; choose one of the two! -->
+
+				<!-- Option 1: Bootstrap Bundle with Popper -->
+				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+				<!-- Option 2: Separate Popper and Bootstrap JS -->
+				<!--
+				<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+				<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+				-->
+			<!--<a href='/member/login'>로그인</a>-->
+
+<!--InpoOfPet-->
+	<section id="inpoOfPet">
+
+		<div class="inpoOfPetArea">
+
+			<h3>반려동물 정보</h3>
+
+		</div>
+
+	</section>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
 </body>
 </html>
