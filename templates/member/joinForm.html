@@ -3,15 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <title>회원가입</title>
+    <link rel="stylesheet" href="joinstyle.css">
+    <scrpit src="jquery-3.4.1.js"></scrpit>
 </head>
 <body>
-<h3>회원가입</h3>
-<form action="/member/join" method="post">
-    id:<input type="text" name="id"><br/>
-    pwd:<input type="text" name="pwd"><br/>
-    name:<input type="text" name="name"><br/>
-    email:<input type="text" name="email"><br/>
-    <input type="submit" value="가입">
-</form>
+    <section class="join-form">
+        <h1>JOIN FORM</h1>
+        <form action="/member/join" method="post">
+                <div class="int-area">
+                    <input type="text" name="id" id="id" autocomplete="off" required>
+                    <label for ="id">USER NAME</label>
+                </div>
+                <div class="int-area">
+                    <input type="password" name="pw" id="pw" autocomplete="off" required>
+                    <label for="pw">PASSWORD</label>
+                </div>
+                <div class="int-area">
+                    <input type="text" name="type" id="type" autocomplete="off" required>
+                    <label for="type">타입(개,고양이)</label>
+                <div class="int-area">
+                    <input type="password" name="breed" id="breed" autocomplete="off" required>
+                    <label for="pw">품종</label>
+                </div>
+                <div class="int-area">
+                    <input type="text" name="gender" id="gender" autocomplete="off" required>
+                    <label for="gender">성별</label>
+                </div>
+                <div class="int-area">
+                    <input type="text" name="btype" id="btype" autocomplete="off" required>
+                    <label for="btype">혈액형</label>
+                </div>
+                <div class="btn-area">
+                    <button id="btn"
+                    type="submit">JOIN</button>
+                </div>
+        </form>
+       
+    </section>
+
+    
 </body>
 </html>
