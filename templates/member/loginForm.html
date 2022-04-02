@@ -3,30 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>로그인</title>
-    <link rel="stylesheet" href="loginstyle.css">
-    <scrpit src="jquery-3.4.1.js"></scrpit>
 </head>
 <body>
-    <section class="login-form">
-        <h1>LOGIN FORM</h1>
-        <form action="/member/login" method="post">
-                <div class="int-area">
-                    <input type="text" name="id" id="id" autocomplete="off" required>
-                    <label for ="id">USER NAME</label>
-                </div>
-                <div class="int-area">
-                    <input type="password" name="pw" id="pw" autocomplete="off" required>
-                    <label for="pw">PASSWORD</label>
-                </div>
-                <div class="btn-area">
-                    <button id="btn"
-                    type="submit">LOGIN</button>
-                </div>
-        </form>
-        <div class="caption">
-            <a href="/member/join">Join?</a>           
-        </div>
-    </section>
-
+<h3>로그인폼</h3>
+<form action="/member/login" method="post">
+    id:<input type="text" name="id"><br/>
+    pwd:<input type="password" name="pwd"><br/>
+    <input type="submit" value="login">
+</form>
+<a href="/member/join">회원가입/a>
 </body>
 </html>
